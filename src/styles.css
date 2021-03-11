@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+/* color palette */
+
+.bg-primary-dark {
+    background-color: #0B0C10;
+}
+
+.bg-dark {
+    background-color: #1F2833;
+}
+
+.bg-grey {
+    background-color: #C5C6C7;
+}
+
+.bg-aqua {
+    background-color: #66FCF1;
+}
+
+.bg-turquoise {
+    background-color: #45A29E;
+}
+
+.fg-primary-dark {
+    color: #0B0C10;
+}
+
+.fg-dark {
+    color: #1F2833;
+}
+
+.fg-grey {
+    color: #C5C6C7;
+}
+
+.fg-aqua {
+    color: #66FCF1;
+}
+
+.fg-turquoise {
+    color: #45A29E;
+}

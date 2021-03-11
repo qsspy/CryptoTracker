@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiParams: {
+    apiKey: '55d84b148306c0ca09e7abeaf24deb17',
+    apiBaseUrl : 'https://api.nomics.com/v1'
+  }
 };
 
 /*
