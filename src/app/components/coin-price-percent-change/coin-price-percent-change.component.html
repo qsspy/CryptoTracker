@@ -1,0 +1,9 @@
+<div class="main-container">
+    <div class="arrow-container">
+        <mat-icon *ngIf="percentValue < 0" class="color-red"> south </mat-icon>
+        <mat-icon *ngIf="percentValue > 0" class="color-green"> north </mat-icon>
+    </div>
+    <div class="percent color-green mat-sub" [ngClass]="{'color-red' : percentValue < 0}">
+        {{ percentValue + '%'}}
+    </div>
+</div> 

@@ -1,0 +1,19 @@
+.color-green {
+    color: green;
+}
+
+.color-red {
+    color: red
+}
+
+.arrow-container {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+}

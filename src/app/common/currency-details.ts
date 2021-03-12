@@ -28,5 +28,5 @@ export class CurrencyDetails {
  rank : number = 0
  rank_delta : number = 0
  high : number = 0 
- high_timestamp :  Date = new Date() 
+ high_timestamp :  Date = new Date()
 }

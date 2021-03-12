@@ -1,0 +1,41 @@
+img {
+    width: 30px;
+    padding-right: 1em;
+}
+
+.main-container {
+
+   display: flex;
+   align-items: center;
+   width: 150px;
+}
+
+.name-container {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.long-name-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100px;
+    
+}
+
+.long-name-text {
+    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    min-width: 0px;
+    margin:0em;
+    font-weight: bold;
+}
+
+.short-name-text {
+
+    font-family: monospace;
+    color: grey;
+}
+

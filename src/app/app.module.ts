@@ -8,11 +8,15 @@ import { CurrencyTableComponent } from './components/currency-table/currency-tab
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CurrencyDataService } from './services/currency-data.service';
+import { CoinNameComponent } from './components/coin-name/coin-name.component';
+import { CoinPricePercentChangeComponent } from './components/coin-price-percent-change/coin-price-percent-change.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrencyTableComponent
+    CurrencyTableComponent,
+    CoinNameComponent,
+    CoinPricePercentChangeComponent
   ],
   imports: [
     BrowserModule,

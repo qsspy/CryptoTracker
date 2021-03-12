@@ -13,27 +13,20 @@ export class CurrencyTableComponent implements OnInit {
 
   currenciesDetails: CurrencyDetails[] = []
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['rank','id','price','rank_delta'];
+  dataSource = new MatTableDataSource<CurrencyDetails>(this.currenciesDetails);
 
-  @ViewChild(MatSort, {static: true}) sort!: MatSort
+  @ViewChild(MatSort, {static: false}) sort!: MatSort
 
   constructor(private currencyDataService: CurrencyDataService) {}
 
   ngOnInit(): void {
 
-    this.dataSource.sort = this.sort
-
-    console.log(this.sort)
-
-    const sortState: Sort = {active: 'name', direction: 'desc'};
-    this.sort.active = sortState.active;
-    this.sort.direction = sortState.direction;
-    this.sort.sortChange.emit(sortState);
-
     this.currencyDataService.getCurrenciesPaginate(50, 5, Status.ACTIVE).subscribe(
       data => {
         this.currenciesDetails = data
+        this.dataSource = new MatTableDataSource<CurrencyDetails>(this.currenciesDetails);
+        this.dataSource.sort = this.sort
       }
     )
   }
