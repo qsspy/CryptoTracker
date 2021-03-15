@@ -10,20 +10,24 @@ import { MaterialModule } from './material/material.module';
 import { CurrencyDataService } from './services/currency-data.service';
 import { CoinNameComponent } from './components/coin-name/coin-name.component';
 import { CoinPricePercentChangeComponent } from './components/coin-price-percent-change/coin-price-percent-change.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrencyTableComponent,
     CoinNameComponent,
-    CoinPricePercentChangeComponent
+    CoinPricePercentChangeComponent,
+    NavHeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule
   ],
   providers: [CurrencyDataService],
   bootstrap: [AppComponent]

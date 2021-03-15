@@ -13,8 +13,7 @@ export class CoinPricePercentChangeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-
+    
   }
 
 }

@@ -1,13 +1,27 @@
-.currency-table {
+.table-container {
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.95;
+    border-style: solid;
+    border-color:#45A29E;
+    border-width: 1px;
 
     
 }
 
-.currency-table td {
+.table-container table {
+    background-color: #1F2833;
+}
+
+.table-container td {
+    color: #C5C6C7;
+    background-color: #1F2833;
+}
+
+.table-container mat-paginator {
     color: #C5C6C7;
     background-color: #1F2833;
 }
@@ -21,20 +35,58 @@ img {
     height: 20px;
 }
 
-table {
-    opacity: 0.95;
-    border-style: solid;
-    border-color:#45A29E;
-    border-width: 1px;
-
-}
-
 td, th {
     vertical-align: middle !important;
 }
 
+.details-btn {
+    color: rgb(206,13,173);
+    border: rgb(206,13,173) solid 2px;
+    border-radius: 7px;
+    background: transparent;
+    font-weight: bold;
 
+    transition: background .3s;
+}
 
-.column-id-width {
-    width: 50px;
+.details-btn:hover {
+    background: rgba(206,13,173,0.3);
+}
+
+.details-btn:focus {
+    -webkit-box-shadow: 0px 0px 10px 0px #000000; 
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent;
+}
+ 
+::ng-deep .mat-select-value {
+  color: #005999;
+    font-weight: bold;
+    font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+    color: #005999;
+}
+::ng-deep .mat-option{
+  padding: 0!important;
+
+}
+::ng-deep .mat-paginator-icon{
+
+    color: #C5C6C7;
+}
+
+::ng-deep .mat-option-text {
+
+    text-align: center;
+    color: #C5C6C7;
+    background-color: #0F1823;
+}
+
+::ng-deep .mat-option-text:hover {
+
+    background-color: #151D28;
 }
