@@ -37,6 +37,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     transition: background-color 1s;
 
@@ -45,6 +46,18 @@
 .nav-element:hover {
     background-color: #45A29E;
     color: azure;
+}
+
+.nav-element:focus {
+    border: none;
+}
+
+.nav-element > p {
+    transition: transform .4s;
+}
+
+.nav-element:focus > p {
+    transform: translate(0px, -5px);
 }
 
 .free-space-left {
@@ -57,6 +70,21 @@
     flex-grow: 10;
     background: linear-gradient(270deg, rgba(31,40,48,1) 0%, rgba(93,138,159,0) 100%);
 
+}
+
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.nav-element:focus{
+    outline: none;
+    
 }
 
 @media (max-width: 768px) {
@@ -83,5 +111,4 @@
         align-items: center;
         justify-content: center;
     }
-
 }

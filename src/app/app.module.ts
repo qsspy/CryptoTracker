@@ -12,6 +12,8 @@ import { CoinNameComponent } from './components/coin-name/coin-name.component';
 import { CoinPricePercentChangeComponent } from './components/coin-price-percent-change/coin-price-percent-change.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
+import { RoutingModule } from './routing/routing/routing.module';
+import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
     CoinNameComponent,
     CoinPricePercentChangeComponent,
     NavHeaderComponent,
+    CurrencyDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgbModule
+    NgbModule,
+    RoutingModule
   ],
   providers: [CurrencyDataService],
   bootstrap: [AppComponent]

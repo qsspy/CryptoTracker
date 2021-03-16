@@ -1,9 +1,6 @@
 <div class="mat-elevation-z8 table-container d-flex flex-column">
   <table mat-table matSort [dataSource]="dataSource" >
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
     <!-- RANK -->
     <ng-container matColumnDef="rank">
       <th mat-header-cell mat-sort-header *matHeaderCellDef class="column-id-width"> # </th>
@@ -98,4 +95,7 @@
                  [pageSizeOptions]="[5, 10, 20, 50]"
                  [pageSize]="currentPageSize" 
                  showFirstLastButtons></mat-paginator>
+</div>
+<div *ngIf="!dataLoaded" class="container-fluid d-flex justify-content-center pt-5">
+  <mat-spinner></mat-spinner>
 </div>
