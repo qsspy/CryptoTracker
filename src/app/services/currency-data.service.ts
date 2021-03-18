@@ -2,15 +2,12 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CurrencyDetails, Status } from '../common/currency-details';
-import { environment as env, environment }  from '../../environments/environment'
+import { environment as env }  from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyDataService {
-
-  callTime = +environment.apiParams.lastApiCallTime
-  delay = +environment.apiParams.apiCallDelay
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,6 +18,13 @@ export class CurrencyDataService {
     console.log(pathUrl)
 
     return this.httpClient.get<CurrencyDetails[]>(pathUrl,  {observe: 'response', responseType: 'json'})
+  }
+
+  getSingleCurrencyData(id: string): Observable<CurrencyDetails[]> {
+
+    const pathUrl = `${env.apiParams.apiBaseUrl}/currencies/ticker?key=${env.apiParams.apiKey}&ids=${id}`
+
+    return this.httpClient.get<CurrencyDetails[]>(pathUrl)
   }
 
   getCurrencies(status: Status) {
@@ -38,7 +42,7 @@ export class CurrencyDataService {
   }
 
   getDeadCurrencies() {
-    const pathUrl= "https://api.nomics.com/v1/currencies/ticker?key=55d84b148306c0ca09e7abeaf24deb17&status=dead"
+    const pathUrl= `${env.apiParams.apiBaseUrl}/currencies/ticker?key=${env.apiParams.apiKey}&status=dead`
 
     return this.httpClient.get<CurrencyDetails[]>(pathUrl)
   }

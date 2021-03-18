@@ -82,7 +82,7 @@
     <ng-container matColumnDef="details_btn">
       <th mat-header-cell *matHeaderCellDef>Details </th>
       <td mat-cell *matCellDef="let element">
-        <button class="details-btn">See Details</button>
+        <button class="details-btn" [routerLink]="['/currency-details',element.id]">See Details</button>
       </td>
     </ng-container>
 

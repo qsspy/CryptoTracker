@@ -5,7 +5,7 @@ import { CurrencyTableComponent } from 'src/app/components/currency-table/curren
 
 const routes: Routes = [
   {path: 'currency-table', component: CurrencyTableComponent},
-  {path: 'currency-details', component: CurrencyDetailsComponent },
+  {path: 'currency-details/:id', component: CurrencyDetailsComponent },
   {path: '**', redirectTo: '/currency-table', pathMatch: 'full' }
 ]
 

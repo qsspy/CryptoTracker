@@ -3,9 +3,9 @@ import { CurrencyDetails, Status } from 'src/app/common/currency-details';
 import { CurrencyDataService } from 'src/app/services/currency-data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort'
-import { ThrowStmt } from '@angular/compiler';
 import { MatPaginator } from '@angular/material/paginator';
 import { environment } from '../../../environments/environment'
+import { CurrencyChartService } from 'src/app/services/currency-chart.service';
 
 @Component({
   selector: 'app-currency-table',
@@ -31,9 +31,12 @@ export class CurrencyTableComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatSort, {static: false}) sort!: MatSort
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
-  constructor(private currencyDataService: CurrencyDataService) {}
+  constructor(private currencyDataService: CurrencyDataService,
+              private currencyChartService : CurrencyChartService) {}
   
   ngOnInit(): void {
+
+    this.dataLoaded = false
     
   }
 
@@ -52,7 +55,5 @@ export class CurrencyTableComponent implements OnInit, AfterViewInit  {
       }
     )
   }
-
-  
 }
 

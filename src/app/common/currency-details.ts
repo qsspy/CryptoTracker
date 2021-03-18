@@ -53,20 +53,22 @@ export class CurrencyDetails {
         return this['365d'].market_cap_change_pct
     }
 
-    constructor(responseBody: any) {
-        this.id = responseBody.id
-        this.symbol =responseBody.symbol
-        this.name = responseBody.name
-        this.logo_url = responseBody.logo_url
-        this.status = responseBody.status
-        this.price = responseBody.price
+    constructor(responseBody?: any) {
+        this.id = responseBody?.id
+        this.symbol =responseBody?.symbol
+        this.name = responseBody?.name
+        this.logo_url = responseBody?.logo_url
+        this.status = responseBody?.status
+        this.price = responseBody?.price
 
-        this.rank = responseBody.rank
-        this.rank_delta = responseBody.rank_delta
+        this.rank = responseBody?.rank
+        this.rank_delta = responseBody?.rank_delta
 
-        this['1d'] = responseBody['1d']
-        this['7d'] = responseBody['7d']
-        this['30d'] = responseBody['30d']
-        this['365d'] = responseBody['365d']
+        if(responseBody) {
+            this['1d'] = responseBody['1d']
+            this['7d'] = responseBody['7d']
+            this['30d'] = responseBody['30d']
+            this['365d'] = responseBody['365d']
+        }
     }
 }
