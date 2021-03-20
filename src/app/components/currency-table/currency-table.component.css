@@ -6,29 +6,28 @@
     margin-bottom: 10px;
     opacity: 0.95;
     border-style: solid;
-    border-color:#45A29E;
     border-width: 1px;
 
     
 }
 
 .table-container table {
-    background-color: #1F2833;
+    background: radial-gradient(circle, rgba(41,0,28,0.9) 0%, rgba(11,12,16,0.9) 100%);
 }
 
 .table-container td {
     color: #C5C6C7;
-    background-color: #1F2833;
+
 }
 
 .table-container mat-paginator {
     color: #C5C6C7;
-    background-color: #1F2833;
+
 }
 
 .mat-header-cell {
     color: #C5C6C7;
-    background-color: #1F2833;
+
 }
 
 img {
@@ -89,4 +88,8 @@ td, th {
 ::ng-deep .mat-option-text:hover {
 
     background-color: #151D28;
+}
+
+::ng-deep .mat-paginator {
+    background: radial-gradient(circle, rgba(41,0,28,0.9) 0%, rgba(11,12,16,0.9) 100%);
 }

@@ -4,6 +4,11 @@
     background-color: #0B0C10;
 }
 
+.bg-secondary-dark {
+
+  background-color: #0F1823;
+}
+
 .bg-dark {
     background-color: #1F2833;
 }

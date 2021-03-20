@@ -1,9 +1,13 @@
 <div class="main-container">
-    <div class="arrow-container">
+    <div *ngIf="isArrowOnTheLeft" class="arrow-container">
         <mat-icon *ngIf="percentValue < 0" class="text-danger"> south </mat-icon>
         <mat-icon *ngIf="percentValue > 0" class="text-success"> north </mat-icon>
     </div>
-    <div *ngIf="percentValue"  class="percent  mat-sub" [ngClass]="{'text-danger' : percentValue < 0, 'text-success' : percentValue > 0}">
-        {{ (percentValue*100) | number:'1.0-4'}}%
+    <div *ngIf="percentValue && percentValue!=0"  class="percent  mat-sub" [ngClass]="{'text-danger' : percentValue < 0, 'text-success' : percentValue > 0}">
+        {{ (percentValue*valueMultiplier) | number:'1.0-4'}}{{ postfix }}
+    </div>
+    <div *ngIf="!isArrowOnTheLeft" class="arrow-container">
+        <mat-icon *ngIf="percentValue < 0" class="text-danger"> south </mat-icon>
+        <mat-icon *ngIf="percentValue > 0" class="text-success"> north </mat-icon>
     </div>
 </div> 

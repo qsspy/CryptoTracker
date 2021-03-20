@@ -8,7 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CoinPricePercentChangeComponent implements OnInit {
 
+  @Input() valueMultiplier = 100
+  @Input() isArrowOnTheLeft = true
   @Input() percentValue: number = 1.123
+  @Input() postfix: string = '%'
 
   constructor() { }
 

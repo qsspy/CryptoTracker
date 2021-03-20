@@ -20,7 +20,7 @@ export class CurrencyDetails {
   //  price_timestamp: Date = new Date()
   //  circulating_supply: number = 0
    // max_supply: number = 0
-  //  market_cap: number = 0
+    market_cap: number = 0
   //  num_exchanges: number = 0
    // num_pairs: number = 0
   //  num_pairs_unmapped: number = 0
@@ -63,6 +63,7 @@ export class CurrencyDetails {
 
         this.rank = responseBody?.rank
         this.rank_delta = responseBody?.rank_delta
+        this.market_cap = responseBody?.market_cap
 
         if(responseBody) {
             this['1d'] = responseBody['1d']

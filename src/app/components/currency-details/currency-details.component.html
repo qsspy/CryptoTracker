@@ -1,4 +1,69 @@
-<div class="chart-container bg-dark" style="height: 500px;">
-    <p>{{ trackedCurrency.id }}</p>
-    <p>{{ currencyHistory.prices }}</p>
+<div class="p-3">
+    <div class="bg-primary-dark main-container container-fluid
+            d-flex justify-content-center">
+        <div class="content-container container-fluid col my-3">
+            <div class="header-container row h-25">
+                <!-- HEADER -->
+                <div *ngIf="trackedCurrency" class="header-container-content p-3 w-100">
+                    
+                    <div class="currency-id-container d-flex">
+
+                        <img src="{{ trackedCurrency.logo_url }}" alt="">
+                        <div class="px-3 ">
+                            <p class="name">{{ trackedCurrency.name }}</p>
+                            <p class="id">{{ trackedCurrency.id }}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <ul class="d-flex">
+                            <li >
+                                <p class="label">MARKET CAP</p>
+                                <p class="value">{{ trackedCurrency.market_cap | ShortCurrencyForm:'$'}}</p>
+                                <app-coin-price-percent-change
+                                    [percentValue]="trackedCurrency['1d'].market_cap_change_pct"
+                                    [isArrowOnTheLeft]="false">
+                                </app-coin-price-percent-change>
+                            </li>
+                            <li >
+                                <p class="label">VOLUME</p>
+                                <p class="value">{{ trackedCurrency['1d'].volume | ShortCurrencyForm:'$'}}</p>
+                                <app-coin-price-percent-change [percentValue]="trackedCurrency['1d'].volume_change_pct"
+                                    [isArrowOnTheLeft]="false">
+                                </app-coin-price-percent-change>
+                            </li>
+                            <li >
+                                <p class="label">PRICE</p>
+                                <p class="value">{{ trackedCurrency.price | ShortCurrencyForm:'$'}}</p>
+                                <app-coin-price-percent-change [percentValue]="trackedCurrency.day_change_percent"
+                                    [isArrowOnTheLeft]="false">
+                                </app-coin-price-percent-change>
+                            </li>
+                            <li >
+                                <p class="label">RANK</p>
+                                <p class="value">{{ trackedCurrency.rank}}#</p>
+                                <app-coin-price-percent-change 
+                                    [percentValue]="trackedCurrency.rank_delta"
+                                    [isArrowOnTheLeft]="false" 
+                                    [postfix]="''"
+                                    [valueMultiplier]="1">
+                                </app-coin-price-percent-change>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <mat-spinner [diameter]=50 *ngIf="!trackedCurrency"></mat-spinner>
+            </div>
+            <div class="chart-full-container row h-75 d-flex">
+
+                <div class="chart-container bg-secondary-dark p-1 d-flex">
+                    <mat-spinner *ngIf="!chart"></mat-spinner>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="chart-filter">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,7 +1,126 @@
-.chart-container {
+.main-container {
+
+    height: 900px;
     border-radius: 10px;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10px;
+
 }
+
+.content-container {
+
+    background: linear-gradient(45deg, rgba(37,17,48,1) 55%, rgba(73,22,49,1) 100%);
+
+    border-radius: 10px;
+    border: #251130 1px solid;
+    
+}
+
+.chart-full-container {
+
+    background-color: #0a111d;
+    border-radius: 10px;
+    border: #121e31 1px solid;
+
+}
+
+.chart-filter {
+
+    min-width: 200px;
+}
+
+
+
+.chart-container {
+
+    flex: 1;
+    border-radius: 10px;
+    min-width: 0px;
+    border: #172230 1px solid;
+}
+
+mat-spinner {
+    align-self: center;
+    margin: auto;
+}
+
+.mat-spinner circle {
+    stroke: aqua;
+}
+
+.currency-id-container{
+    height: 100px;
+    min-width: 500px;
+}
+
+.name {
+
+    color: #C5C6C7;
+    font-size: 2em;
+    
+}
+
+.label {
+    color: #C5C6C7;
+    font-weight: bold;
+}
+
+.value {
+    color: grey;
+}
+
+p {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.id {
+    color: #858585;
+    font-size: 1.2em;
+}
+
+.space-fill {
+    flex: 1;
+}
+
+.header-container-content {
+    display: flex;
+    align-items: center;
+}
+
+ul li {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+@media (max-width:1100px) {
+   
+    .header-container-content {
+        display: block;
+        align-items: none;
+    }
+
+    .name {
+        font-size: 1.5em;
+    }
+
+    .id {
+        font-size: 0.9em;
+    }
+
+    .currency-id-container{
+        height: 80px;
+    }
+
+    ul {
+        margin-top: 10px;
+    }
+
+    ul li {
+        padding-right: 28px;
+        padding-left: 0px;
+    }
+
+    .chart-filter {
+        min-width: 120px;
+    }
+}
+
