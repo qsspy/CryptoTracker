@@ -15,6 +15,8 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
 import { RoutingModule } from './routing/routing/routing.module';
 import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
 import { ShortCurrencyFormPipe } from './custom-pipes/short-currency-form-pipe';
+import { CurrencyChartService } from './services/currency-chart.service';
+import { FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { ShortCurrencyFormPipe } from './custom-pipes/short-currency-form-pipe';
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
-  providers: [CurrencyDataService],
+  providers: [CurrencyDataService, CurrencyChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

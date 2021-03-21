@@ -52,16 +52,49 @@
                         </ul>
                     </div>
                 </div>
-                <mat-spinner [diameter]=50 *ngIf="!trackedCurrency"></mat-spinner>
+                <mat-spinner [diameter]=50 *ngIf="!trackedCurrency && !noDataFound" class="processing-element"></mat-spinner>
+                <p *ngIf="noDataFound" class="processing-element">No Data Found</p>
             </div>
             <div class="chart-full-container row h-75 d-flex">
 
                 <div class="chart-container bg-secondary-dark p-1 d-flex">
-                    <mat-spinner *ngIf="!chart"></mat-spinner>
-                    <canvas id="myChart"></canvas>
+                    <mat-spinner *ngIf="!chart && !noDataFound" class="processing-element"></mat-spinner>
+                    <p *ngIf="noDataFound" class="processing-element">No Data Found</p>
+                    <canvas [ngClass]="{'d-none' : !chart}" id="myChart"></canvas>
                 </div>
-                <div class="chart-filter">
-
+                <div class="chart-filter d-flex flex-column align-items-center">
+                    
+                    <p>Choose period</p>
+                    
+                    <div class="date-picker-container">
+                        <mat-form-field appearance="fill" >
+                            <mat-label>Period start</mat-label>
+                            <input matInput 
+                            [max]="endDate" 
+                            [min]="minStartDate" 
+                            [matDatepicker]="s_picker"
+                            [(ngModel)]="startDate"
+                            readonly>
+                            <mat-datepicker-toggle [for]="s_picker" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker [startAt]="startDate" #s_picker></mat-datepicker>
+                        
+                        </mat-form-field>
+                        
+                        <mat-form-field appearance="fill">
+                            <mat-label>Period end</mat-label>
+                            <input matInput 
+                            [min]="startDate"
+                            [max]="maxEndDate"
+                            [(ngModel)]="endDate"
+                            
+                            [matDatepicker]="e_picker">
+                            <mat-datepicker-toggle [for]="e_picker" matSuffix></mat-datepicker-toggle>
+                            <mat-datepicker [startAt]="endDate" #e_picker></mat-datepicker>
+                        </mat-form-field>
+    
+                        <button mat-raised-button color="primary"
+                                (click)="fetchCurrencyPriceHistory(currencyID, startDate,endDate)"> Search </button>
+                    </div>
                 </div>
             </div>
         </div>

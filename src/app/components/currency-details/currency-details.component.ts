@@ -10,6 +10,7 @@ import { Chart } from 'node_modules/chart.js'
 import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 import { map } from 'rxjs/operators'
 import { DatePipe } from '@angular/common';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-currency-details',
@@ -18,6 +19,15 @@ import { DatePipe } from '@angular/common';
 })
 export class CurrencyDetailsComponent implements OnInit {
 
+  currencyID : string = ''
+
+  startDate = new Date()
+  endDate = new Date()
+
+  minStartDate = new Date(2009,0,1)
+  maxEndDate: Date = new Date()
+
+  maxDateRelative: Date = new Date()
 
   private apiDelay = +environment.apiParams.apiCallDelay
 
@@ -25,30 +35,44 @@ export class CurrencyDetailsComponent implements OnInit {
   currencyHistory: CurrencyPriceHistory = new CurrencyPriceHistory()
 
   chart: any
+  noDataFound = false
 
   constructor(private currencyChartService: CurrencyChartService,
     private currencyDataService: CurrencyDataService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { 
+
+      this.currencyID = this.route.snapshot.paramMap.get('id')!
+      this.startDate.setFullYear(new Date().getFullYear() - 1)
+    }
 
   ngOnInit(): void {
 
-    const currencyID = this.route.snapshot.paramMap.get('id')!
-
-    this.fetchCurrencyPriceHistory(currencyID)
-    this.fetchCurrencyData(currencyID)
+    this.fetchCurrencyPriceHistory(this.currencyID,this.startDate, this.endDate)
+    this.fetchCurrencyData(this.currencyID)
   }
 
-  private fetchCurrencyPriceHistory(currencyID: string) {
-    this.currencyChartService.getCurrencyPriceHistory(currencyID, new Date(2020, 0, 0))
+  fetchCurrencyPriceHistory(currencyID: string, startDate: Date, endDate?: Date) {
+    this.currencyChartService.getCurrencyPriceHistory(currencyID, this.startDate,this.endDate)
       .subscribe(
         data => {
+          if(data.length == 0) {
+            this.noDataFound = true
+            return
+          }
+
           this.currencyHistory = data[0]
 
-          this.buildChart()
+          if(!this.chart) {
+            this.buildChart()
+          } else {
+            this.chart.data.labels = this.currencyHistory.timestamps.map(date => new DatePipe('en-US').transform(date, 'yyyy-MM-dd'))
+            this.chart.data.datasets[0].data = this.currencyHistory.prices
+            this.chart.update()
+          }
         },
         async error => {
           await Utils.delay(this.apiDelay)
-          this.fetchCurrencyPriceHistory(currencyID)
+          this.fetchCurrencyPriceHistory(currencyID,startDate,endDate)
         }
       )
   }
@@ -57,6 +81,11 @@ export class CurrencyDetailsComponent implements OnInit {
 
     this.currencyDataService.getSingleCurrencyData(currencyID).subscribe(
       data => {
+        if(data.length == 0) {
+          this.noDataFound = true
+          return
+        }
+
         this.trackedCurrency = new CurrencyDetails(data[0])
       },
       async error => {
